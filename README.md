@@ -1,6 +1,6 @@
 # 概要 #
 ```
-Javaを使ったSlackBot
+Slack上で入力されたコメントに対して反応をするbot
 ```
 
 # Requirement #
