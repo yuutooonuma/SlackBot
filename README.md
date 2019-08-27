@@ -20,7 +20,21 @@ src/main/java直下にcredentials.propertiesというファイルを作り、以
 slack.bot_api_token=xoxb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```　
 
-###  
+### Dependencies ###
+```
+mysql-connector-java-8.0.17.jar
+slacklet-1.0.4.jar
+commons-logging-1.2.jar
+httpclient-4.5.9.jar
+httpcore-4.4.11.jar
+httpmime-4.5.9.jar
+simpleslackapi-1.2.0.jar
+slacklet-1.0.4.jar
+slf4j-api-1.7.26.jar
+threetenbp-1.4.0.jar
+tyrus-standalone-client-1.15.jar
+```
+
 
 
 ### コマンド一覧 ###
