@@ -1,6 +1,4 @@
-# SlackBot（製作途中）
-
-# 概要
+# 概要 #
 ```
 Javaを使ったSlackBot
 ```
@@ -20,10 +18,12 @@ src/main/java直下にcredentials.propertiesというファイルを作り、以
 
 ```
 slack.bot_api_token=xoxb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+```　
+
+###  
 
 
-### コマンド一覧
+### コマンド一覧 ###
 ```
 
 ジャンケンモード:ジャンケンモードに入る
