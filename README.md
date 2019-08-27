@@ -18,7 +18,7 @@ src/main/java直下にcredentials.propertiesというファイルを作り、以
 
 ```
 slack.bot_api_token=xoxb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```　
+```  
 
 ### Dependencies ###
 ```
