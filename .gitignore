@@ -2,10 +2,10 @@
 .classpath
 .project
 .settings
-
-/.metadata/
-/bin/
-/test/
-
+.bin
+.test
 credentials.properties
 dbconnector.properties
+
+
+/.metadata/
