@@ -16,11 +16,17 @@ Slack上で入力されたコメントに対して反応をするbot
 
 ### credentialsをセットする
 
-src/main/java直下にcredentials.propertiesというファイルを作り、以下のように取得したapi tokenをセットします
+src直下にcredentials.propertiesというファイルを作り、以下のように取得したapi tokenをセットします
 
 ```
 slack.bot_api_token=xoxb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```  
+src直下にdbconnector.propertiesというファイルを作り、以下のように取得したur,user,passwordをセットします
+```
+URL=xxxxxxxxxxxxxxxxxxxx
+USER=xxxxxxxxxxxxx
+PASSWORD=xxxxxxxxxx
+```
 
 ### DBConnectorをセットする ###
 ```
