@@ -1,13 +1,14 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class DBConnector {
-	private static String driverName = "com.mysql.jdbs.Driver";
-	private static String url ="";
+	private static String driverName = "com.mysql.cj.jdbc.Driver";
+	private static String url =ResourceBundle.getBundle("dbconnector").getString("URL");
 
-	private static String user ="root";
-	private static String password = "";
+	private static String user =ResourceBundle.getBundle("dbconnector").getString("USER");
+	private static String password = ResourceBundle.getBundle("dbconnector").getString("PASSWORD");
 
 	public Connection getConnection() {
 		Connection con = null;
