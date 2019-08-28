@@ -1,5 +1,11 @@
+# for Eclipse
+.classpath
+.project
+.settings
+
 /.metadata/
 /bin/
-credentials.properties/
-dbconnector.properties/
 /test/
+
+credentials.properties
+dbconnector.properties
