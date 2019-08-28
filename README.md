@@ -57,6 +57,6 @@ tyrus-standalone-client-1.15.jar
 ```
 
 ```
-Exmaple00.java:randomチャンネルに対応
+RandomBot.java:randomチャンネルに対応
 Example01.java:ダイレクトメッセージに対応
 ```
