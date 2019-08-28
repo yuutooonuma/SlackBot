@@ -1,9 +1,9 @@
-# SlackBot（製作途中）
+# 概要 #
+```
+Slack上で入力されたコメントに対して反応をするbot
+```
 
-# 概要
-```
-Javaを使ったSlackBot
-```
+# Requirement #
 
 ### Eclipseへのimport
 
@@ -16,21 +16,36 @@ Javaを使ったSlackBot
 
 ### credentialsをセットする
 
-1.プロジェクト上で、右クリック  
-2.Configure>Convert to Maven project  
-3.(これでmaven projectとしてEclipseに読み込まれます)  
-4.API Token for BOT をセット  
-
 src/main/java直下にcredentials.propertiesというファイルを作り、以下のように取得したapi tokenをセットします
 
 ```
 slack.bot_api_token=xoxb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```  
+
+### DBConnectorをセットする ###
+```
+DBConnector.javaに必要なurl,user、passwordをセットする
+```
+
+### Dependencies ###
+```
+mysql-connector-java-8.0.17.jar
+slacklet-1.0.4.jar
+commons-logging-1.2.jar
+httpclient-4.5.9.jar
+httpcore-4.4.11.jar
+httpmime-4.5.9.jar
+simpleslackapi-1.2.0.jar
+slacklet-1.0.4.jar
+slf4j-api-1.7.26.jar
+threetenbp-1.4.0.jar
+tyrus-standalone-client-1.15.jar
 ```
 
 
-### コマンド一覧
-```
 
+# コマンド一覧 #
+```
 ジャンケンモード:ジャンケンモードに入る
 予定追加:予定を入力し記録する
 確認:入力した予定を確認する
