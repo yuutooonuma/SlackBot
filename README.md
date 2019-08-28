@@ -28,10 +28,6 @@ USER=xxxxxxxxxxxxx
 PASSWORD=xxxxxxxxxx
 ```
 
-### DBConnectorをセットする ###
-```
-DBConnector.javaに必要なurl,user、passwordをセットする
-```
 
 ### Dependencies ###
 ```
