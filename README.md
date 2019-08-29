@@ -21,7 +21,7 @@ src直下にcredentials.propertiesというファイルを作り、以下のよ�
 ```
 slack.bot_api_token=xoxb-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```  
-src直下にdbconnector.propertiesというファイルを作り、以下のように取得したur,user,passwordをセットします
+src直下にdbconnector.propertiesというファイルを作り、以下のように取得したurl,user,passwordをセットします
 ```
 URL=xxxxxxxxxxxxxxxxxxxx
 USER=xxxxxxxxxxxxx
