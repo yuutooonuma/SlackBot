@@ -19,12 +19,9 @@ public class JankenMemoBot {
 
 	public static void main(String[] args) throws IOException {
 
-
 		String botToken = ResourceBundle.getBundle("credentials").getString("slack.bot_api_token");
 
 		SlackletService slackService = new SlackletService(botToken);
-
-
 
 		DBConnector dbConnector = new DBConnector();
 		Connection connection = dbConnector.getConnection();
@@ -49,29 +46,19 @@ public class JankenMemoBot {
 				String yoteiName ="";
 				String userYotei = "";
 
-
-
-
-
-			@Override
+				@Override
 			public void onDirectMessagePosted(SlackletRequest req, SlackletResponse resp) {
 
 				// BOT宛のダイレクトメッセージがポストされた
 
-
 				// メッセージを送信したユーザーのメンションを取得する
 				String mention = req.getUserDisp();
 				//ユーザーの情報を取得する
-
 				String getUserDisp=req.getUserDisp();
-
 				//ユーザーの情報を取得する
 				SlackUser SlackUser= req.getSender();
 				//ユーザーの名前を取得する
 				String realName = req.getSender().getRealName();
-
-				// セッションを取得する（セッションはユーザー毎に固有）
-				//SlackletSession session = req.getSession();
 				//メッセージ本文を取得
 				String content = req.getContent();
 
@@ -82,7 +69,7 @@ public class JankenMemoBot {
 
 		                    yoteiName=realName;
 		                    userYotei=content;
-
+		                    //予定を追加するSQL
 		                    String sql = "INSERT INTO yotei  (user_name,user_yotei,insert_date) VALUES(?,?,? )";
 		            		try {
 		            			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -101,7 +88,7 @@ public class JankenMemoBot {
 		            		} else if (mode == 3&&usery.equals(getUserDisp)) {
 		            			yoteiName=realName;
 		            			userYotei=content;
-
+		            			//予定があるか確認するSQL
 		            			String sql =
 										"SELECT * FROM yotei WHERE   user_name = ?" ;
 								try {
@@ -118,6 +105,7 @@ public class JankenMemoBot {
 						}catch(Exception e) {
 		            			e.printStackTrace();
 		            		}
+								//予定を削除するSQL
 								String sql2 =
 		            				"DELETE  FROM yotei WHERE user_yotei = ? AND user_name = ?";
 		            		PreparedStatement preparedStatement;
@@ -141,7 +129,6 @@ public class JankenMemoBot {
 		        		    listJ.add(":v:");
 		        		    listJ.add(":wave:");
 
-
 		        		    Collections.shuffle(listJ);
 		        		    listJ.get(0);
 
@@ -163,7 +150,7 @@ public class JankenMemoBot {
 		            			resp.reply(mention+"さんの"+win+"勝"+lose+"敗です");
 		            			if(win==2){
 		                    		resp.reply("2勝しました、終わります");
-
+		                    		//戦績を記録するSQL
 		                    		String sql2 = "UPDATE janken SET total_win = total_win +1 WHERE user_name = ? ";
 		                    		try {
 		                    			PreparedStatement preparedStatement = connection.prepareStatement(sql2);
@@ -183,7 +170,7 @@ public class JankenMemoBot {
 		            			resp.reply(mention+"さんの"+win+"勝"+lose+"敗です");
 		            			if(win==2){
 		                    		resp.reply("2勝しました、終わります");
-
+		                    		//戦績を記録するSQL
 		                    		String sql2 = "UPDATE janken SET total_win = total_win +1 WHERE user_name = ? ";
 		                    		try {
 		                    			PreparedStatement preparedStatement = connection.prepareStatement(sql2);
@@ -203,6 +190,7 @@ public class JankenMemoBot {
 		            			resp.reply(mention+"さんの"+win+"勝"+lose+"敗です");
 		            			if(win==2){
 		                    		resp.reply("2勝しました、終わります");
+		                    		//戦績を記録するSQL
 		                    		String sql2 = "UPDATE janken SET total_win = total_win +1 WHERE user_name = ? ";
 		                    		try {
 		                    			PreparedStatement preparedStatement = connection.prepareStatement(sql2);
@@ -262,6 +250,7 @@ public class JankenMemoBot {
 		            		} catch(Exception e) {
 		            			e.printStackTrace();
 		            		}
+		            		//試合数を記録するSQL
 		            		String sql2 = "UPDATE janken SET total_game = total_game +1 WHERE user_name = ? ";
                     		try {
                     			PreparedStatement preparedStatement = connection.prepareStatement(sql2);
@@ -282,8 +271,7 @@ public class JankenMemoBot {
 						}else if(mode==0&&content.contentEquals("確認")) {
 							resp.reply(mention+"さんの予定はこちらです");
 							yoteiName=realName;
-
-
+							//予定を抽出するSQL
 							String sql =
 									"SELECT * FROM yotei WHERE   user_name = ?" ;
 							try {
@@ -305,6 +293,7 @@ public class JankenMemoBot {
 					}else if(mode==0&&content.contentEquals("戦績確認")) {
 						resp.reply(mention+"さんの戦績はこちらです");
 						yoteiName=realName;
+						//戦績を抽出するSQL
 						String sql =
 								"SELECT * FROM janken WHERE   user_name = ?" ;
 						try {
@@ -314,17 +303,14 @@ public class JankenMemoBot {
 							while(rs.next()) {
 								resp.reply(rs.getString("total_game")+"試合");
 								resp.reply(rs.getString("total_win")+"勝");
-
-
-										}
+								}
 							}catch(Exception e) {
 		            			e.printStackTrace();
 		            			}
-
-
-					}else if(content.equals("予定ランダム抽出")) {
+						}else if(content.equals("予定ランダム抽出")) {
 						yoteiName=realName;
-						String sql = "SELECT * FROM yotei ORDER BY RAND() LIMIT 1 WHERE user_name = ?";
+						//予定をランダム抽出するSQL
+						String sql = "SELECT * FROM yotei WHRER user_name = ? ORDER BY RAND() LIMIT 1 ";
 						try {
 							PreparedStatement preparedStatement = connection.prepareStatement(sql);
 							preparedStatement.setString(1, yoteiName);
